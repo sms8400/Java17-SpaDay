@@ -1,14 +1,19 @@
-package org.launchcode.controllers;
+package org.launchcode.spaday.controllers;
 
+import org.launchcode.spaday.models.Client;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
-
 @Controller
 public class SpaDayController {
 
+    @GetMapping
+    public String customerForm () {
+        return "serviceSelection";
+    }
     public boolean checkSkinType(String skinType, String facialType) {
         if (skinType.equals("oily")) {
             return facialType.equals("Microdermabrasion") || facialType.equals("Rejuvenating");
@@ -27,7 +32,7 @@ public class SpaDayController {
     @GetMapping(value="")
     @ResponseBody
     public String customerForm () {
-        String html = "<form method = 'post'>" +
+        String html = "<form method = 'post' action='menu'>" +
                 "Name: <br>" +
                 "<input type = 'text' name = 'name'>" +
                 "<br>Skin type: <br>" +
@@ -41,13 +46,14 @@ public class SpaDayController {
                 "<select name = 'manipedi'>" +
                 "<option value = 'manicure'>Manicure</option>" +
                 "<option value = 'pedicure'>Pedicure</option>" +
+                "<option value = 'both'>Manicure and Pedicure</option>" +
                 "</select><br>" +
                 "<input type = 'submit' value = 'Submit'>" +
                 "</form>";
         return html;
     }
 
-    @PostMapping(value="")
+    @PostMapping(value="menu")
     public String spaMenu(@RequestParam String name, @RequestParam String skintype, @RequestParam String manipedi, Model model) {
 
         ArrayList<String> facials = new ArrayList<>();
@@ -62,6 +68,11 @@ public class SpaDayController {
                 appropriateFacials.add(facials.get(i));
             }
         }
+
+        model.addAttribute("name", name);
+        model.addAttribute("skintype", skintype);
+        model.addAttribute("manipedi", manipedi);
+        model.addAttribute("appropriateFacials", appropriateFacials);
 
         return "menu";
     }
