@@ -24,3 +24,13 @@ table {
             padding: 10px;
             text-align: center;
 }
+
+label {
+  display: block;
+}
+
+input[type='submit'],
+label {
+  margin-top: 1rem;
+}
+

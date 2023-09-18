@@ -1,4 +1,4 @@
-package org.launchcode.spaday.controllers;
+package org.launchcode.controllers;
 
 import org.launchcode.spaday.models.User;
 import org.springframework.stereotype.Controller;
