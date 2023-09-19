@@ -1,6 +1,6 @@
 package org.launchcode.controllers;
 
-import org.launchcode.spaday.models.User;
+import org.launchcode.models.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
