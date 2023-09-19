@@ -78,5 +78,6 @@ public class Client {
                 appropriateFacials.add(facials.get(i));
             }
         }
+
     }
 }

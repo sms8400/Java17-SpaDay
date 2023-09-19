@@ -9,6 +9,7 @@
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
     <h2>My Profile</h2>
+    <p th:text = "${name}"></p>
     <p th:text = "${client.skinType}"></p>
     <p th:text = "${client.nailService}"></p>
 </div>
@@ -31,6 +32,11 @@
     </div>
     <div th:if = "${client.nailService == 'pedicure'}">
         <h3>Pedicure</h3>
+        <p th:replace = "fragments :: pedicureDescription"></p>
+    </div>
+    <div th:if = "${manipedi == 'both'}">
+        <h3>Manicure and Pedicure</h3>
+        <p th:replace = "fragments :: manicureDescription"></p>
         <p th:replace = "fragments :: pedicureDescription"></p>
     </div>
 </div>
