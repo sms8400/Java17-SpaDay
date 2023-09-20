@@ -8,6 +8,12 @@
 
 <form method="post">
     <div class = "form-group">
+        <label>Email:
+            <input th:field="${user.email}" class="form-control" th:value="${email}">
+            <p class="error" th:errors="${user.email}"></p>
+        </label>
+    </div>
+    <div class = "form-group">
         <label>Username:
             <input th:field="${user.userName}" class="form-control" th:value="${user}">
             <p class="error" th:errors="${user.userName}"></p>
@@ -25,14 +31,7 @@
             <p class="error" th:errors="${user.verify}"></p>
         </label>
     </div>
-    <div class = "form-group">
-        <label>Email:
-            <input th:field="${user.email}" class="form-control" th:value="${email}">
-            <p class="error" th:errors="${user.email}"></p>
-        </label>
     </div>
-    </div>
-
     <input type="submit" value="Register" class="">
 </form>
 </body>
